@@ -52,3 +52,23 @@ where o.CustomerID is null  --sisteme kayıt olup sipariş vermeyen müşteriler
 -- left join : yazıma göre, solda olup sağda olmayanları da getir demek.
 
 -- right join : yazıma göre, sağda olup solda olmayanları getir demek.
+
+
+
+
+
+-- HOMEWORK --
+-- Find out how much money we have made in total from each product.
+
+--Hint: Group by will be used
+
+--Hint: Tables Products, Orders, Order Details will be joined.
+
+--Hint: Sum will be used.
+
+SELECT p.ProductName [Ürün Adı], 
+               SUM(od.UnitPrice * od.Quantity) [Kazanılan Toplam Miktar]
+FROM Products p
+LEFT JOIN [Order Details] od ON p.ProductID = od.ProductID
+GROUP BY p.ProductName
+ORDER BY [Kazanılan Toplam Miktar] DESC
